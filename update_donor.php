@@ -55,6 +55,12 @@
 								<div class="invalid-feedback">Please enter a Blood Type.</div>
 							</div>
 							<div class="form-group">
+                                <label for="quantity">Quantity (Kg)</label>
+                                <input type="text" class="form-control" name="quantity" id="quantity" placeholder="1Kg" value="<?php echo $row['quantity'] ?>" required>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Please enter a Middle Name.</div>
+                            </div>
+							<div class="form-group">
 								<label for="address">Address</label>
 								<input type="textarea" class="form-control" name="address" id="address" value="<?php echo $row['address'] ?>" placeholder="Street, Purok and Barangay, CIty, Province, Country" required />
 								<div class="valid-feedback">Looks good!</div>
@@ -80,18 +86,19 @@
 							</div>
 							<label class="control-label">Upload a Photo</label>
 							<div class="form-group">
-								<div class="input-group pb-3 py-1">
-									<div class="input-group-prepend">
-										<span class="input-group-text bg-primary"><i class="fas fa-solid fa-upload fa-fw"></i></span>
-									</div>
-									<div class="custom-file">
-										<input type="file" name="photo" id="photo" class="form-control form-control-sm " value="" required>
-										<label class="custom-file-label" for="photo">Choose File</label>
-									</div>
-								</div>
-								<p class="text-muted m-0">- Allowed Formats: JPG, PNG</p>
-								<p class="text-muted m-0">- Maximum Size: 50 MB</p>
-							</div>
+                                <div class="input-group pb-3 py-1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-primary"><i class="fas fa-solid fa-upload fa-fw"></i></span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" name="photo" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" class="custom-file-input" value="" required>
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose File</label>
+                                    </div>
+                                </div>
+                                <div class="valid-feedback">Looks good!</div>
+                                <div class="invalid-feedback">Please enter your Body Weight.</div>
+                                <p class="text-muted m-0">- Allowed Formats: JPG, PNGT</p>
+                            </div>
 
 						</div>
 					</div>

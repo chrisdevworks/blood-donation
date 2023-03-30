@@ -1,7 +1,7 @@
 <?php
 // include_once('db_connect.php');
 // connectdb();/
-include_once '../bloodbank-management-system/private/config';
+include_once 'private/config.php';
 include_once 'private/database.php';
 
 $database = new Database();
@@ -72,7 +72,7 @@ $db = $database->getConnection();
                                         <button class="btn btn-sm btn-primary update_donor" data-toggle="modal" type="button" data-target="#update_modal<?php echo $row['donor_id'] ?>">
                                             <i class="fas fa-edit"></i>
                                         </button>
-                                        <button type="button" class="btn btn-sm btn-danger delete_donor" data-id="<?php echo $row['donor_id'] ?>">
+                                        <button type="button" class="btn btn-sm btn-danger" onclick="delete_donor(<?php echo $row['donor_id'] ?>)">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
@@ -220,27 +220,33 @@ $db = $database->getConnection();
 
     $('.delete_donor').click(function() {
         _conf("<h5 class='text-danger'>Are you sure you want to delete this data?</h5> ", "delete_donor", [$(this).attr('data-id')])
+        alert()
     })
 
 
     function delete_donor($donor_id) {
         start_load()
-        $.ajax({
-            url: 'ajax.php?action=delete_donor',
-            method: 'POST',
-            data: {
-                donor_id: $donor_id
-            },
-            success: function(resp) {
-                if (resp == 1) {
-                    alert_toast("Data successfully deleted", 'success');
-                    // setTimeout(function() {
-                    //     location.reload()
-                    //     // location.replace('index.php?page=office_list')
-                    // }, 800)
+
+        const confirmed = confirm("Are you sure you want to send this data?");
+
+        if (confirmed) {
+            $.ajax({
+                url: 'ajax.php?action=delete_donor',
+                method: 'POST',
+                data: {
+                    donor_id: $donor_id
+                },
+                success: function(resp) {
+                    if (resp == 1) {
+                        alert_toast("Data successfully deleted", 'success');
+                        setTimeout(function() {
+                            location.reload()
+                            // location.replace('index.php?page=office_list')
+                        }, 800)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
 
